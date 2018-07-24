@@ -4,7 +4,9 @@ title: About
 permalink: /about/
 ---
 
-{% include image.html url="/images/octojekyll.png" caption="Octojekyll." width=300 align="right" %}
+{% include image.html url="https://avatars3.githubusercontent.com/u/6937001?s=460&v=4" caption="This is a photo of me." width=300 align="right" %}
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc blandit mattis nulla eu cursus. Fusce finibus, orci sit amet tincidunt fermentum, risus ante pharetra nisi, eget tempus tellus tellus ut est. Nunc tempus cursus arcu mattis ultricies. Cras volutpat purus et lectus facilisis tempor. Suspendisse at lorem feugiat, feugiat massa vel, scelerisque dolor. Proin justo nisl, mattis eu sapien in, efficitur fringilla nulla. Phasellus placerat, lacus in venenatis tristique, risus dolor eleifend felis, vitae finibus augue nibh ut libero. Morbi sit amet tincidunt lorem.
+I am a 5th year doctoral candidate studying clinical psychology at Wheaton College (IL).  My research interests include global mental health, attitudes towards others and society (e.g., peace and reconciliation), and community-based work with conflict-affected populations.  Most of my work has been conducted in Rwanda and the Democratic Republic of the Congo.
+
+Outside of my academic pursuits, I enjoy outdoor activities, programming and coding, and cooking.
 
