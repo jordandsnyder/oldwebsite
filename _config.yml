@@ -2,8 +2,8 @@
 title: Jordan D. Snyder
 email: jordandanielsnyder@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
-Doctoral candidate in clinical psychology interested in global mental health,
-social processes, and community-based work with conflict-affected populations.
+  Doctoral candidate in clinical psychology interested in global mental health,
+  social processes, and community-based work with conflict-affected populations.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: 
