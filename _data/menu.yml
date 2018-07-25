@@ -24,6 +24,7 @@
   href: "/teaching/"  
 - title: "Miscellany"
   href: "/miscellany/"
+  subcategories:
     - subtitle: "Programming and Statistics"
       subhref: "/miscellany/programmingandstatistics/"
     - subtitle: "Current Reading"
