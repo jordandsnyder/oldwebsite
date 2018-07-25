@@ -21,4 +21,6 @@
     - subtitle: "Publications"
       subhref: "/research/publications/"
 - title: "Teaching"
-  href: "/teaching/"    
+  href: "/teaching/"  
+- title: "Misc"
+  href: "/misc/"
