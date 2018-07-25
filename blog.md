@@ -4,7 +4,7 @@ title: Blog
 permalink: /blog/
 ---
 
-Tell us about your blog. Hopefully it's cool.
+This is my blog. It will discuss my experiences in Alaska, and other topics including but not limited to programming, coding, and other topics.
 
 <ul class="listing">
 {% for post in site.posts %}
