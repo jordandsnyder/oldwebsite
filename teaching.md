@@ -18,4 +18,4 @@ Research Design (Masters) - Wheaton College, Fall 2016
 
 ##  Summary of Teaching Philosophy
 
-I hope to accompany students along their journey, but also foster in them a duty to journey into course material, other students’ lives, and ultimately the world. It is my calling to walk alongside students and encourage and challenge them in these ways along their own journey. This journeying is my inspiration as I seek to foster challenge and encouragement in students’ own journeys.  
+I hope to accompany students along their journey, but also foster in them a duty to explore the course material and ultimately the world. I wish to walk alongside students and encourage and challenge them in as they explore their own journey. 
