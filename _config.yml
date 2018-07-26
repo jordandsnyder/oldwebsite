@@ -8,6 +8,7 @@ baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://yourdomain.com" # the base hostname & protocol for your site
 twitter_username: 
 github_username:  jordandsnyder
+rss: y
 
 # Build settings
 markdown: kramdown
@@ -16,6 +17,13 @@ markdown: kramdown
 permalink: blog/:year/:month/:title
 job.title: "Doctoral Candidate"
 excerpt_separator: "<!--more-->"
+
+# Enter your Google Analytics web tracking code (e.g. UA-2110908-2) to activate tracking
+google_analytics: UA-66601076-1
+
+# Enter your Disqus shortname (not your username) to enable commenting on posts
+# You can find your shortname on the Settings page of your Disqus account
+disqus: jordandsnyder
 
 # SEO stuff
 # google_author: ""
