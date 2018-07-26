@@ -29,5 +29,5 @@ disqus: jordandsnyder
 # google_author: ""
 # google_site_verification: ""
 # bing_webmastertools_id: ""
-gems:
+plugins:
  - jekyll-feed
