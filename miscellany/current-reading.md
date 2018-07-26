@@ -11,7 +11,7 @@ There are several great reads out there:
   
   * Eric Metaxas' [Boenhoeffer](https://www.amazon.com/dp/B003GY0K48/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1)
   
-  * To learn R from a humorous psychologist, check out [Discovering Statistics Using R](https://uk.sagepub.com/en-gb/eur/discovering-    statistics-using-r/book236067)
+  * To learn R from a humorous psychologist, check out [Discovering Statistics Using R](https://uk.sagepub.com/en-gb/eur/discovering-statistics-using-r/book236067)
   
   * A great [read](https://www.amazon.com/Building-Peace-Sustainable-Reconciliation-Societies/dp/1878379739/ref=sr_1_3?s=books&ie=UTF8&qid=1532570588&sr=1-3&keywords=lederach) on Conflict Transformation is by John Paul Lederach
   
