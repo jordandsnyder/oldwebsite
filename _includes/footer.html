@@ -43,6 +43,12 @@
             </a>
           </li>
           {% endif %}
+          {% if site.footer-links.rss %}
+          <li>
+            <a href="{{ site.baseurl }}/feed.xml">
+              <i class="svg-icon rss"></i></a>
+           {% endif %}
+         </li>
         </ul>
       </div>
 
