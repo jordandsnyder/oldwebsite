@@ -3,6 +3,7 @@ layout: page
 title: Democratic Republic of the Congo
 permalink: /research/drc/
 ---
+## What Has Been Lost? An Exploration of Conservation of Resources Theory and Psychological Distress in the Eastern Democratic Republic of the Congo
 
 The eastern Democratic Republic of the Cong (DRC) has been in a state of protracted
 conflict for the past 20 years. Rates of exposure to potentially traumatic events, as well as
