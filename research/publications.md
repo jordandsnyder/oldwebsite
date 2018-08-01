@@ -4,7 +4,7 @@ title: Publications
 permalink: /research/publications/
 ---
 
-* Kang, E., Leu, C.S., Synder, J., Robbins, R.N., Bucek, A. & Mellins, C.A. (2018). Caregiver perceptions of environment moderate relationship between neighborhood characteristics and language skills among youth living with perinatal HIV and uninfected youth exposed to HIV in New York City. AIDS Care. DOI: 10.1080/09540121.2018.1492698.
+* Kang, E., Leu, C.S., **Snyder, J.D.**, Robbins, R.N., Bucek, A. & Mellins, C.A. (2018). Caregiver perceptions of environment moderate relationship between neighborhood characteristics and language skills among youth living with perinatal HIV and uninfected youth exposed to HIV in New York City. AIDS Care. DOI: 10.1080/09540121.2018.1492698.
 
 <iframe src="https://ezerkang.files.wordpress.com/2018/06/kang-2018-ac-neighborhood-ppvt.pdf" class="gde-frame" style="height: 1000px; width: 100%; border: none;" scrolling="yes"></iframe>
 
