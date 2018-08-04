@@ -14,8 +14,6 @@
       subhref: "/research/rwanda/"
     - subtitle: "Democratic Republic of the Congo"
       subhref: "/research/drc/"
-    - subtitle: "Open Science"
-      subhref: "/research/open-science/"
     - subtitle: "Collaborators"
       subhref: "/research/collaborators/"
     - subtitle: "Publications"
@@ -24,8 +22,4 @@
   href: "/teaching/"  
 - title: "Miscellany"
   href: "/miscellany/"
-  subcategories:
-    - subtitle: "Programming and Statistics"
-      subhref: "/miscellany/programmingandstatistics/"
-    - subtitle: "Current Reading"
-      subhref: "/miscellany/current-reading/"
+
