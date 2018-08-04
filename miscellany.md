@@ -21,7 +21,7 @@ There are several great reads out there:
   
   More to come...
   
-  ##  Programming and Statistics##
+  ##  Programming and Statistics ##
 
 I am increasing interested in learning R as a way to help answer questions that communities and organizations have in their unique contexts. Ultimately, I ended up conducting my own dissertation in R to further learn more about programming. I am increasing interested in other tools that will equip me to help communities and organizations, including learning more about R, Python, and programming and statistics in general.
 
