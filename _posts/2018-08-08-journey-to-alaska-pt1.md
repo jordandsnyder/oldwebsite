@@ -13,21 +13,21 @@ Below is a general map of my route:
 
 I hope to share this journey with  you!
 
-{% include image.html url="/images/Alaska1.jpg" caption="This is me with the car I am going with." width=400 align="center" %}
+{% include image.html url="/images/Alaska1.JPG" caption="This is me with the car I am going with." width=400 align="center" %}
 
 I really have not done the best job at doing photography, but will continue to try to!
 
-{% include image.html url="/images/Alaska2.jpg" caption="Some hay bales in Saskatchewan, Canada." width=400 align="center" %}
+{% include image.html url="/images/Alaska2.JPG" caption="Some hay bales in Saskatchewan, Canada." width=400 align="center" %}
 
 Part way through my scenic journey in Saskatchewan, a bee joined me for part of the trip. The bee stayed with me for over an hour! Eventually, he flew out the window, but he may have been a bit far from home!
 
-{% include image.html url="/images/Alaska4.jpg" caption="The BEE!" width=400 align="center" %}
+{% include image.html url="/images/Alaska4.JPG" caption="The BEE!" width=400 align="center" %}
 
-{% include image.html url="/images/Alaska5.jpg" caption="Another scenic view." width=400 align="center" %}
+{% include image.html url="/images/Alaska5.JPG" caption="Another scenic view." width=400 align="center" %}
 
 Finally, I was able to settle in and get some good food at my next stop.
 
-{% include image.html url="/images/Alaska6.jpg" caption="It had 4.4 stars on google." width=400 align="center" %}
+{% include image.html url="/images/Alaska6.JPG" caption="It had 4.4 stars on google." width=400 align="center" %}
 
 
 Around 1800 miles left to travel to Anchorage!
