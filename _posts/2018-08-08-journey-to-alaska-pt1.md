@@ -4,7 +4,6 @@ title:  "Journey to Alaska Part I"
 date:   2018-08-08 23:00:00
 categories: Alaska! Travel
 ---
-
 Hello All!
 
 I am moving to Anchorage, Alaska! As such, I am driving to Anchorage from the lower 48.
