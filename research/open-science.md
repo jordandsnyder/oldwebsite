@@ -9,3 +9,5 @@ I am a strong believer in Open Science.  What do I mean by this? Ultimately, sci
 * [Center for Open Science](https://cos.io/)
 
 * [Society for the Improvement of Psychological Science](https://improvingpsych.org/)
+
+

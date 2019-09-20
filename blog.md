@@ -4,7 +4,7 @@ title: Blog
 permalink: /blog/
 ---
 
-This is my blog. It will discuss my experiences in Alaska, and other topics including but not limited to programming, coding, and other topics.
+This is my blog. It will discuss my experiences including but not limited to programming, coding, and other topics.
 
 <ul class="listing">
 {% for post in site.posts %}
