@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors | Jordan D. Snyder</title>
+    <link>/authors/</link>
+      <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+    <description>Authors</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Jordan D. Snyder 2019</copyright><lastBuildDate>Sun, 01 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>Authors</title>
+      <link>/authors/</link>
+    </image>
+    
+    <item>
+      <title></title>
+      <link>/authors/admin/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/admin/</guid>
+      <description>&lt;p&gt;My research interests include clinical-community psychology, global mental health, serious mental illness, interventions for mental health in low and middle-income countries, and mental health and social processes related to conflict. Ultimately, through my research and applied work, I seek to empower communities and organizations to answer the questions that are important to them so that they can effectively change their communities.&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>David Boan</title>
+      <link>/authors/david-boan/</link>
+      <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/david-boan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Edward B. Davis</title>
+      <link>/authors/edward-b.-davis/</link>
+      <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/edward-b.-davis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Everett L. Worthington Jr.</title>
+      <link>/authors/everett-l.-worthington-jr./</link>
+      <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/everett-l.-worthington-jr./</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Jamie Aten</title>
+      <link>/authors/jamie-aten/</link>
+      <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/jamie-aten/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Leif Van Grinsven</title>
+      <link>/authors/leif-van-grinsven/</link>
+      <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/leif-van-grinsven/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tao Liu</title>
+      <link>/authors/tao-liu/</link>
+      <pubDate>Wed, 25 Sep 2019 00:00:00 +0000</pubDate>
+      <guid>/authors/tao-liu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Amelia Bucek</title>
+      <link>/authors/amelia-bucek/</link>
+      <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
+      <guid>/authors/amelia-bucek/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cheung-Shuin Leu</title>
+      <link>/authors/cheung-shuin-leu/</link>
+      <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
+      <guid>/authors/cheung-shuin-leu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Claude A. Mellins</title>
+      <link>/authors/claude-a.-mellins/</link>
+      <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
+      <guid>/authors/claude-a.-mellins/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ezer Kang</title>
+      <link>/authors/ezer-kang/</link>
+      <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
+      <guid>/authors/ezer-kang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rueben N. Robbins</title>
+      <link>/authors/rueben-n.-robbins/</link>
+      <pubDate>Wed, 27 Jun 2018 00:00:00 +0000</pubDate>
+      <guid>/authors/rueben-n.-robbins/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

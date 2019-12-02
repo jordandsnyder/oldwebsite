@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.5.0">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Jordan D. Snyder">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="We talk a bit about a brief example of a Secret Santa program!">
+
+  
+  <link rel="alternate" hreflang="en-us" href="/post/jupyter/">
+
+  
+
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha256-Vzbj7sDDS/woiFS3uNKo8eIuni59rjyNGtXfstRzStA=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css" integrity="sha256-SHMGCYmST46SoyGgo4YR/9AlK1vf3ff84Aq9yK4hdqM=" crossorigin="anonymous">
+    
+
+    
+
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CRoboto:400,400italic,700%7CRoboto+Mono&display=swap">
+  
+
+  
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.css">
+
+  
+
+
+
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-66601076-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+      dataLayer.push(arguments);
+  }
+
+  function trackOutboundLink(url) {
+    gtag('event', 'click', {
+         'event_category': 'outbound',
+         'event_label': url,
+         'transport_type': 'beacon',
+         'event_callback': function () {
+           document.location = url;
+         }
+    });
+    console.debug("Outbound link clicked: " + url);
+  }
+
+  function onClickCallback(event) {
+    if ((event.target.tagName !== 'A') || (event.target.host === window.location.host)) {
+      return;
+    }
+    trackOutboundLink(event.target);  
+  }
+
+  gtag('js', new Date());
+  gtag('config', 'UA-66601076-1', {});
+
+  
+  document.addEventListener('click', onClickCallback, false);
+</script>
+
+
+  
+
+
+  
+
+  <link rel="manifest" href="/index.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="/post/jupyter/">
+
+  
+  
+  
+  
+    
+    
+  
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="twitter:site" content="@Jordan_D_Snyder">
+  <meta property="twitter:creator" content="@Jordan_D_Snyder">
+  
+  <meta property="og:site_name" content="Jordan D. Snyder">
+  <meta property="og:url" content="/post/jupyter/">
+  <meta property="og:title" content="Creating a Secret Santa program in R | Jordan D. Snyder">
+  <meta property="og:description" content="We talk a bit about a brief example of a Secret Santa program!"><meta property="og:image" content="/img/icon-192.png">
+  <meta property="twitter:image" content="/img/icon-192.png"><meta property="og:locale" content="en-us">
+  
+    
+      <meta property="article:published_time" content="2019-12-01T00:00:00&#43;00:00">
+    
+    <meta property="article:modified_time" content="2019-12-01T00:00:00&#43;00:00">
+  
+
+  
+
+
+    
+
+
+
+
+
+
+  
+
+
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "/post/jupyter/"
+  },
+  "headline": "Creating a Secret Santa program in R",
+  
+  "datePublished": "2019-12-01T00:00:00Z",
+  "dateModified": "2019-12-01T00:00:00Z",
+  
+  "author": {
+    "@type": "Person",
+    "name": "admin"
+  },
+  
+  "publisher": {
+    "@type": "Organization",
+    "name": "Jordan D. Snyder",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "/img/icon-512.png"
+    }
+  },
+  "description": "We talk a bit about a brief example of a Secret Santa program!"
+}
+</script>
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+  <title>Creating a Secret Santa program in R | Jordan D. Snyder</title>
+
+</head>
+
+<body id="top" data-spy="scroll" data-offset="70" data-target="#TableOfContents" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0 compensate-for-scrollbar" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">Jordan D. Snyder</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#hero"><span>Demo</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#featured"><span>Publications</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/courses/"><span>Courses</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/files/Snyder_Online_CV.pdf"><span>CV</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1>Creating a Secret Santa program in R</h1>
+
+  
+  <p class="page-subtitle">A festivus for the rest of us!</p>
+  
+
+  
+    
+
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  
+  <span><a href="/authors/admin/">admin</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    Dec 1, 2019
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    7 min read
+  </span>
+  
+
+  
+  
+  
+  <span class="middot-divider"></span>
+  <a href="/post/jupyter/#disqus_thread"></a>
+  
+
+  
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style">
+      
+
+<h2 id="the-inspiration">The Inspiration</h2>
+
+<p>My friends and I started a tradition shortly after we left college. Despite being spread out across the country (and now, the world!), we wished to remain in touch and get each other some holiday cheer. As the years moved on, and as we added to our number with partners (and now offspring!), we wanted to continue the tradition of secret santa. One year, my buddy <a href="www.reckerfamily.com" target="_blank">Alex</a> created a python secret santa bot that divvied us up and sent out emails to all parties involved. This served as the inspation for this project: I wanted to create a program that could divvy us up without giving away our information to others as well as teach myself some programming in the process.</p>
+
+<p><img src="https://media.giphy.com/media/wranrCRq3f90A/source.gif" alt="" /></p>
+
+<p>While writing this little program, I found a lot of great ideas and code snippets from other useRs who looked at these very issues including: <a href="https://www.tjmahr.com/secret-santa-graph-traversal/" target="_blank">Tristan Mahr&rsquo;s graphing example</a>, <a href="https://livefreeordichotomize.com/2017/11/15/secret-sampling/" target="_blank">Sarah Lotspeich&rsquo;s and Lucy D&rsquo;Agostino McGowan&rsquo;s example and their ponyexpress integration </a>, and <a href="https://selbydavid.com/2016/12/07/santa/" target="_blank">David Selby&rsquo;s secret santa example</a>. Thanks so much all for helping me create my real first program!</p>
+
+<h2 id="the-problem">The problem</h2>
+
+<p>We wanted a program that could do a couple of things:</p>
+
+<ol>
+<li>Match up santas and receivers that were not partners (i.e., in the same family)</li>
+<li>Once the list has been created, email out the results to everyone so that whoever hosted it did not know who their secret santa was!</li>
+</ol>
+
+<h2 id="a-solution">A solution?</h2>
+
+<p>So, I started to attempt to plan out a game plan to tackle these two specific problems. However, before doing this, I created a test data frame because I wanted to make sure to test the program as I went along.</p>
+
+<pre><code>#Create a test data frame
+santa_firstnames &lt;- c(&quot;Jack&quot;, &quot;Jill&quot;, &quot;Lyle&quot;, &quot;Lilly&quot;, &quot;Bill&quot;, &quot;Dan&quot;, &quot;Deloris&quot;, &quot;Emily&quot;)
+santa_lastnames &lt;- c(&quot;Smith&quot;, &quot;Smith&quot;, &quot;Lewis&quot;, &quot;Lewis&quot;, &quot;Buttes&quot;, &quot;Deznada&quot;, &quot;Deznada&quot;, &quot;Richardson&quot;)
+santa_email &lt;- c(&quot;jacks@test.com&quot;, &quot;jills@test.com&quot;, &quot;lylel@test.com&quot;, &quot;lillyl@test.com&quot;, &quot;billb@test.com&quot;,
+           &quot;dand@test.com&quot;,&quot;delorisd@test.com&quot;, &quot;emilyr@test.com&quot;)
+santa_address &lt;- c(&quot;123 Cherryhill Drive, San Diego, CA 92103&quot;,&quot;123 Cherryhill Drive, San Diego, CA 92103&quot;,
+                   &quot;234 elms ln, Anchorage, AK 99116&quot;, &quot;234 Carita ln, Anchorage, AK 99116&quot;,
+                   &quot;111 Pleasantview Dr., Chicago 11111&quot;, &quot;222 ELM St., Atlanta, GA 22222&quot;,
+                   &quot;222 ELM St., Atlanta, GA 22222&quot;, &quot;999 Peaches St., Tokyo, JPN, 11111&quot;)
+testdf &lt;- as.data.frame(cbind(santa_firstnames,santa_lastnames,santa_email,santa_address))
+</code></pre>
+
+<p>This dataframe would serve as my testing agent throughout the process.</p>
+
+<p>The first function I used was sample():</p>
+
+<pre><code>  newdf &lt;- testdf %&gt;%
+    mutate(receiver_firstnames = sample(santa_firstnames))
+    
+</code></pre>
+
+<p>I then changed the variable names on the original dataframe and pulled them into this newly created dataframe.</p>
+
+<pre><code>  #Create a partner data frame to merge partner variables into it!
+  partnerdf &lt;- testdf %&gt;%
+    transmute(receiver_firstnames = santa_firstnames,
+              receiver_lastnames = santa_lastnames,
+              receiver_email = santa_email,
+              receiver_address = santa_address)
+  #Now join the data frames!
+  newdf &lt;- dplyr::inner_join(newdf,partnerdf, by = &quot;receiver_firstnames&quot;) 
+</code></pre>
+
+<p>Although I knew using the sample() function could be helpful, I soon ran into the problem of having an individual being assigned to themselves. In order to avoid a Kevin scenario [GIF OF KEVIN INSERT], we had to add an ifelse() statement!</p>
+
+<pre><code>newdf$self_eval &lt;- ifelse(newdf$receiver_firstnames == newdf$santa_firstnames, &quot;Problems!&quot;, &quot;No problem here!&quot;)
+
+</code></pre>
+
+<p>This did not necessarily change anything, but it let me knew if there was an issue where someone had themselves!</p>
+
+<p>I did something similar for last names to let me know if there was an issue.</p>
+
+<pre><code>  newdf$fam_eval &lt;- ifelse(newdf$receiver_lastnames == newdf$santa_lastnames, &quot;Problems!&quot;, &quot;No problem here!&quot;)
+</code></pre>
+
+<p>When I got here, I was pretty satisfied! It took a few times of me pressing buttons to rerun the code, but usually after a few tries, I would get a data frame that had no problems!</p>
+
+<p>However, I am quite lazy, and did not wish to continue to press the button. This is probably the weaker area of coding for me, but I needed to have the program continue to iterate until an adequate solution was found. Enter the repeat loop with a condition statement!</p>
+
+<pre><code>#Create a repeat loop that will continue to go over this list until there are no issues (1. No person has themselves. 2. No person has their partner.)
+repeat {
+...
+  #Final problem check!
+  newdf$finaleval &lt;- ifelse(newdf$fam_eval == &quot;Problems!&quot; | newdf$self_eval == &quot;Problems!&quot;,print(&quot;Stop, there are issues!&quot;),print(&quot;Ain't no issues here!&quot;));
+  #Drop superflous columns and create output dataframe!
+  SecretSanta &lt;- newdf %&gt;% select(-c(receiver_email,santa_address,fam_eval,self_eval,finaleval))
+  if (all(newdf$finaleval == &quot;Ain't no issues here!&quot;)) { #Are there issues? If so, repeat loop.
+    print(&quot;We are all finished with divvying up the presents!&quot;);
+    break
+  }
+}
+</code></pre>
+
+<p>I created a final evaluation check that examined our two above error statments, and if there were some problems, it would let us know, but then would repeat the process until a resultant dataframe was created which satisfied all of our conditions.</p>
+
+<p>I then also had it create a final dataframe that was a little bit cleaner for our final step in the process: letting individuals know whom to buy for!</p>
+
+<p>To do this, I slightly adapted the <a href="https://github.com/ropenscilabs/ponyexpress" target="_blank">Ponyexpress Package</a>. For some reason, I got an error when it was validating emails, and so I took that portion of the function out (I am not too familiar with grepl and associated functions or stringr), and then the code worked pretty well.</p>
+
+<pre><code>parcel_create &lt;- function(df,
+                          sender_name = NULL,
+                          sender_email = NULL,
+                          subject = NULL,
+                          bcc = NULL,
+                          template = NULL) {
+  emails &lt;- NULL
+  if (is.null(df) || is.null(sender_name) || is.null(sender_email) || is.null(template)) {
+    stop(&quot;You must supply a value for: df, sender_name, sender_email, and template&quot;)
+  }
+  
+  email &lt;- df
+  email$To &lt;- glue::glue_data(df,&quot;{santa_firstnames} &lt;{santa_email}&gt;&quot;)
+  email$Bcc &lt;- bcc
+  email$From &lt;- glue::glue(&quot;{sender_name} &lt;{sender_email}&gt;&quot;)
+  email$Subject &lt;- subject
+  email$body &lt;- glue::glue_data(df, template)
+  email &lt;- email[, names(email) %in% c(&quot;To&quot;, &quot;Bcc&quot;, &quot;From&quot;, &quot;Subject&quot;, &quot;body&quot;)]
+  structure(email, class = c(&quot;parcel&quot;, &quot;data.frame&quot;))
+}
+</code></pre>
+
+<p>We then create our nice little body of text with our santa message and the GIF from above to spread some holiday cheer:</p>
+
+<pre><code>
+body &lt;- &quot;Merry Christmas Santa {santa_firstnames}!
+
+In the spirit of Santa, you will be getting a gift for {receiver_firstnames}. 
+
+Make sure to get it to {receiver_address} by Dec 25!
+
+
+&lt;img src = 'https://media.giphy.com/media/zhPXoVIBMtnUs/giphy.gif'&gt; &lt;/img&gt;
+
+Santa R Bot&quot;
+
+our_template &lt;- glue::glue(glitter_template)
+
+</code></pre>
+
+<p>Once we are done with this and creating our template, we create the parcel!</p>
+
+<pre><code>parcel &lt;- parcel_create(SecretSanta,
+                        sender_name = &quot;Jordan&quot;,
+                        sender_email = &quot;testemail@test.com&quot;,
+                        subject = &quot;SECRET SANTA&quot;,
+                        template = our_template)
+
+parcel_preview(parcel)  
+
+parcel_send(parcel)
+</code></pre>
+
+<p>This is really an excellent package that I hope to use more in the future! I don&rsquo;t know what part of my email was causing the validation error, but taking it out seemed to help.</p>
+
+<p>Then, the emails were sent!</p>
+
+<h2 id="critique">Critique</h2>
+
+<p>I doubt that this is the most efficient or elegant way to solve this issue. I would prefer a method a bit more proactive rather than bruteforcing an approach, but I am quite pragmatic at the end of the day. This way of solving may result in closed loops of folks giving to each other (e.g., Person A gifts to Person B who gifts to Person C who gifts to Person A while we have three other people that give to each other without crossover), but this is not something we particularly care about at this point in time. I don&rsquo;t know how this process would scale with more folks, but this is good enough for where we are at, I think.</p>
+
+<h2 id="reflections-on-the-process">Reflections on the process</h2>
+
+<p>When I began using R, I was trying to finish my dissertation with it, which I did, but it was a mess. I feel like I have come far from that point. However, going through this process I learned that I have a ways to go. Yet, once I got that repeat loop working, I felt proud of what I accomplished. As my partner could tell you once I sent the draft emails, I was elated! It felt awesome to solve a small problem.</p>
+
+<p>As I look to more analytic projects in the future, I think I took away some helpful tips. First and foremost, sitting down to write out the steps of the problem as I saw them and planning was critical. It kept me on task, kept the tasks more manageable, and allowed me to compartmentalize testing. Testing the program (albeit crude) along the way to make sure the steps were working as I intended and then testing the program with the steps I completed to at that point helped me catch so many errors, big and small, while my thinking was still fresh. Third, was to have some good food while doing it and watch some football!</p>
+
+<p>Would love to have some feedback!</p>
+
+<p>Jordan</p>
+
+    </div>
+
+    
+
+
+
+
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/r/">R</a>
+  
+  <a class="badge badge-light" href="/tags/rstats/">Rstats</a>
+  
+</div>
+
+
+
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=/post/jupyter/&amp;text=Creating%20a%20Secret%20Santa%20program%20in%20R" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=/post/jupyter/&amp;t=Creating%20a%20Secret%20Santa%20program%20in%20R" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=Creating%20a%20Secret%20Santa%20program%20in%20R&amp;body=/post/jupyter/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=/post/jupyter/&amp;title=Creating%20a%20Secret%20Santa%20program%20in%20R" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=Creating%20a%20Secret%20Santa%20program%20in%20R%20/post/jupyter/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=/post/jupyter/&amp;title=Creating%20a%20Secret%20Santa%20program%20in%20R" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+
+  
+  
+  
+  
+  <div class="media author-card content-widget-hr">
+    
+
+    <div class="media-body">
+      <h5 class="card-title"><a href="/authors/admin/"></a></h5>
+      
+      
+      <ul class="network-icon" aria-hidden="true">
+  
+</ul>
+
+    </div>
+  </div>
+
+
+
+
+<section id="comments">
+  
+    
+<div id="disqus_thread"></div>
+<script>
+  let disqus_config = function () {
+    
+    
+    
+  };
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+      return;
+    }
+    var d = document, s = d.createElement('script'); s.async = true;
+    s.src = 'https://' + "jordandsnyder" + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+  
+</section>
+
+
+
+
+
+
+  
+  
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha256-yt2kYMy0w8AbtF89WXb2P1rfjcP/HTHLT7097U8Y5b8=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js" integrity="sha256-1zu+3BnLYV9LdiY85uXMzii3bdrkelyp37e0ZyTAQh0=" crossorigin="anonymous"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/languages/r.min.js"></script>
+        
+      
+
+      
+      
+    
+
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js" integrity="sha256-EErZamuLefUnbMBQbsEqu1USa+btR2oIlCpBJbyD4/g=" crossorigin="anonymous"></script>
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    
+    
+    
+    
+    <script>
+      const search_config = {"indexURI":"/index.json","minLength":1,"threshold":0.3};
+      const i18n = {"no_results":"No results found","placeholder":"Search...","results":"results found"};
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    <script id="dsq-count-scr" src="https://jordandsnyder.disqus.com/count.js" async></script>
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.d6bd04fdad2ad213aa8111c5a3b72fc5.js"></script>
+
+    
+
+
+
+
+
+
+  
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+  <p class="powered-by">
+    
+      <a href="/privacy/">Privacy Policy</a>
+    
+    
+       &middot; 
+      <a href="/terms/">Terms</a>
+    
+  </p>
+  
+
+  <p class="powered-by">
+    &copy; Jordan D. Snyder 2019 
+
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" class="back-to-top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

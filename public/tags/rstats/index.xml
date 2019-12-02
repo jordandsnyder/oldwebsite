@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rstats | Jordan D. Snyder</title>
+    <link>/tags/rstats/</link>
+      <atom:link href="/tags/rstats/index.xml" rel="self" type="application/rss+xml" />
+    <description>Rstats</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator><language>en-us</language><copyright>© Jordan D. Snyder 2019</copyright><lastBuildDate>Sun, 01 Dec 2019 00:00:00 +0000</lastBuildDate>
+    <image>
+      <url>/img/icon-192.png</url>
+      <title>Rstats</title>
+      <link>/tags/rstats/</link>
+    </image>
+    
+    <item>
+      <title>Creating a Secret Santa program in R</title>
+      <link>/post/secret-santa/</link>
+      <pubDate>Sun, 01 Dec 2019 00:00:00 +0000</pubDate>
+      <guid>/post/secret-santa/</guid>
+      <description>
+
+&lt;h2 id=&#34;the-inspiration&#34;&gt;The Inspiration&lt;/h2&gt;
+
+&lt;p&gt;My friends and I started a tradition shortly after we left college. Despite being spread out across the country (and now, the world!), we wished to remain in touch and get each other some holiday cheer. As the years moved on, and as we added to our number with partners (and now offspring!), we wanted to continue the tradition of secret santa. One year, my buddy &lt;a href=&#34;www.alexrecker.com&#34; target=&#34;_blank&#34;&gt;Alex&lt;/a&gt; created a python secret santa bot that divvied us up and sent out emails to all parties involved. This served as the inspation for this project: I wanted to create a program that could divvy us up without giving away our information to others as well as teach myself some programming in the process.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://media.giphy.com/media/wranrCRq3f90A/source.gif&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;While writing this little program, I found a lot of great ideas and code snippets from other useRs who looked at these very issues including: &lt;a href=&#34;https://www.tjmahr.com/secret-santa-graph-traversal/&#34; target=&#34;_blank&#34;&gt;Tristan Mahr&amp;rsquo;s graphing example&lt;/a&gt;, &lt;a href=&#34;https://livefreeordichotomize.com/2017/11/15/secret-sampling/&#34; target=&#34;_blank&#34;&gt;Sarah Lotspeich&amp;rsquo;s and Lucy D&amp;rsquo;Agostino McGowan&amp;rsquo;s example and their ponyexpress integration &lt;/a&gt;, and &lt;a href=&#34;https://selbydavid.com/2016/12/07/santa/&#34; target=&#34;_blank&#34;&gt;David Selby&amp;rsquo;s secret santa example&lt;/a&gt;. Thanks so much all for helping me create my real first program!&lt;/p&gt;
+
+&lt;h2 id=&#34;the-problem&#34;&gt;The problem&lt;/h2&gt;
+
+&lt;p&gt;We wanted a program that could do a couple of things:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Match up santas and receivers that were not partners (i.e., in the same family)&lt;/li&gt;
+&lt;li&gt;Once the list has been created, email out the results to everyone so that whoever hosted it did not know who their secret santa was!&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;a-solution&#34;&gt;A solution?&lt;/h2&gt;
+
+&lt;p&gt;So, I started to attempt to plan out a game plan to tackle these two specific problems. However, before doing this, I created a test data frame because I wanted to make sure to test the program as I went along.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#Create a test data frame
+santa_firstnames &amp;lt;- c(&amp;quot;Jack&amp;quot;, &amp;quot;Jill&amp;quot;, &amp;quot;Lyle&amp;quot;, &amp;quot;Lilly&amp;quot;, &amp;quot;Bill&amp;quot;, &amp;quot;Dan&amp;quot;, &amp;quot;Deloris&amp;quot;, &amp;quot;Emily&amp;quot;)
+santa_lastnames &amp;lt;- c(&amp;quot;Smith&amp;quot;, &amp;quot;Smith&amp;quot;, &amp;quot;Lewis&amp;quot;, &amp;quot;Lewis&amp;quot;, &amp;quot;Buttes&amp;quot;, &amp;quot;Deznada&amp;quot;, &amp;quot;Deznada&amp;quot;, &amp;quot;Richardson&amp;quot;)
+santa_email &amp;lt;- c(&amp;quot;jacks@test.com&amp;quot;, &amp;quot;jills@test.com&amp;quot;, &amp;quot;lylel@test.com&amp;quot;, &amp;quot;lillyl@test.com&amp;quot;, &amp;quot;billb@test.com&amp;quot;,
+           &amp;quot;dand@test.com&amp;quot;,&amp;quot;delorisd@test.com&amp;quot;, &amp;quot;emilyr@test.com&amp;quot;)
+santa_address &amp;lt;- c(&amp;quot;123 Cherryhill Drive, San Diego, CA 92103&amp;quot;,&amp;quot;123 Cherryhill Drive, San Diego, CA 92103&amp;quot;,
+                   &amp;quot;234 elms ln, Anchorage, AK 99116&amp;quot;, &amp;quot;234 Carita ln, Anchorage, AK 99116&amp;quot;,
+                   &amp;quot;111 Pleasantview Dr., Chicago 11111&amp;quot;, &amp;quot;222 ELM St., Atlanta, GA 22222&amp;quot;,
+                   &amp;quot;222 ELM St., Atlanta, GA 22222&amp;quot;, &amp;quot;999 Peaches St., Tokyo, JPN, 11111&amp;quot;)
+testdf &amp;lt;- as.data.frame(cbind(santa_firstnames,santa_lastnames,santa_email,santa_address))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This dataframe would serve as my testing agent throughout the process.&lt;/p&gt;
+
+&lt;p&gt;The first function I used was sample():&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  newdf &amp;lt;- testdf %&amp;gt;%
+    mutate(receiver_firstnames = sample(santa_firstnames))
+    
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I then changed the variable names on the original dataframe and pulled them into this newly created dataframe.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  #Create a partner data frame to merge partner variables into it!
+  partnerdf &amp;lt;- testdf %&amp;gt;%
+    transmute(receiver_firstnames = santa_firstnames,
+              receiver_lastnames = santa_lastnames,
+              receiver_email = santa_email,
+              receiver_address = santa_address)
+  #Now join the data frames!
+  newdf &amp;lt;- dplyr::inner_join(newdf,partnerdf, by = &amp;quot;receiver_firstnames&amp;quot;) 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Although I knew using the sample() function could be helpful, I soon ran into the problem of having an individual being assigned to themselves. In order to avoid a Kevin scenario [GIF OF KEVIN INSERT], we had to add an ifelse() statement!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;newdf$self_eval &amp;lt;- ifelse(newdf$receiver_firstnames == newdf$santa_firstnames, &amp;quot;Problems!&amp;quot;, &amp;quot;No problem here!&amp;quot;)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This did not necessarily change anything, but it let me knew if there was an issue where someone had themselves!&lt;/p&gt;
+
+&lt;p&gt;I did something similar for last names to let me know if there was an issue.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;  newdf$fam_eval &amp;lt;- ifelse(newdf$receiver_lastnames == newdf$santa_lastnames, &amp;quot;Problems!&amp;quot;, &amp;quot;No problem here!&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When I got here, I was pretty satisfied! It took a few times of me pressing buttons to rerun the code, but usually after a few tries, I would get a data frame that had no problems!&lt;/p&gt;
+
+&lt;p&gt;However, I am quite lazy, and did not wish to continue to press the button. This is probably the weaker area of coding for me, but I needed to have the program continue to iterate until an adequate solution was found. Enter the repeat loop with a condition statement!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#Create a repeat loop that will continue to go over this list until there are no issues (1. No person has themselves. 2. No person has their partner.)
+repeat {
+...
+  #Final problem check!
+  newdf$finaleval &amp;lt;- ifelse(newdf$fam_eval == &amp;quot;Problems!&amp;quot; | newdf$self_eval == &amp;quot;Problems!&amp;quot;,print(&amp;quot;Stop, there are issues!&amp;quot;),print(&amp;quot;Ain&#39;t no issues here!&amp;quot;));
+  #Drop superflous columns and create output dataframe!
+  SecretSanta &amp;lt;- newdf %&amp;gt;% select(-c(receiver_email,santa_address,fam_eval,self_eval,finaleval))
+  if (all(newdf$finaleval == &amp;quot;Ain&#39;t no issues here!&amp;quot;)) { #Are there issues? If so, repeat loop.
+    print(&amp;quot;We are all finished with divvying up the presents!&amp;quot;);
+    break
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I created a final evaluation check that examined our two above error statments, and if there were some problems, it would let us know, but then would repeat the process until a resultant dataframe was created which satisfied all of our conditions.&lt;/p&gt;
+
+&lt;p&gt;I then also had it create a final dataframe that was a little bit cleaner for our final step in the process: letting individuals know whom to buy for!&lt;/p&gt;
+
+&lt;p&gt;To do this, I slightly adapted the &lt;a href=&#34;https://github.com/ropenscilabs/ponyexpress&#34; target=&#34;_blank&#34;&gt;Ponyexpress Package&lt;/a&gt;. For some reason, I got an error when it was validating emails, and so I took that portion of the function out (I am not too familiar with grepl and associated functions or stringr), and then the code worked pretty well.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;parcel_create &amp;lt;- function(df,
+                          sender_name = NULL,
+                          sender_email = NULL,
+                          subject = NULL,
+                          bcc = NULL,
+                          template = NULL) {
+  emails &amp;lt;- NULL
+  if (is.null(df) || is.null(sender_name) || is.null(sender_email) || is.null(template)) {
+    stop(&amp;quot;You must supply a value for: df, sender_name, sender_email, and template&amp;quot;)
+  }
+  
+  email &amp;lt;- df
+  email$To &amp;lt;- glue::glue_data(df,&amp;quot;{santa_firstnames} &amp;lt;{santa_email}&amp;gt;&amp;quot;)
+  email$Bcc &amp;lt;- bcc
+  email$From &amp;lt;- glue::glue(&amp;quot;{sender_name} &amp;lt;{sender_email}&amp;gt;&amp;quot;)
+  email$Subject &amp;lt;- subject
+  email$body &amp;lt;- glue::glue_data(df, template)
+  email &amp;lt;- email[, names(email) %in% c(&amp;quot;To&amp;quot;, &amp;quot;Bcc&amp;quot;, &amp;quot;From&amp;quot;, &amp;quot;Subject&amp;quot;, &amp;quot;body&amp;quot;)]
+  structure(email, class = c(&amp;quot;parcel&amp;quot;, &amp;quot;data.frame&amp;quot;))
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We then create our nice little body of text with our santa message and the GIF from above to spread some holiday cheer:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+body &amp;lt;- &amp;quot;Merry Christmas Santa {santa_firstnames}!
+
+In the spirit of Santa, you will be getting a gift for {receiver_firstnames}. 
+
+Make sure to get it to {receiver_address} by Dec 25!
+
+
+&amp;lt;img src = &#39;https://media.giphy.com/media/zhPXoVIBMtnUs/giphy.gif&#39;&amp;gt; &amp;lt;/img&amp;gt;
+
+Santa R Bot&amp;quot;
+
+our_template &amp;lt;- glue::glue(glitter_template)
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Once we are done with this and creating our template, we create the parcel!&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;parcel &amp;lt;- parcel_create(SecretSanta,
+                        sender_name = &amp;quot;Jordan&amp;quot;,
+                        sender_email = &amp;quot;testemail@test.com&amp;quot;,
+                        subject = &amp;quot;SECRET SANTA&amp;quot;,
+                        template = our_template)
+
+parcel_preview(parcel)  
+
+parcel_send(parcel)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This is really an excellent package that I hope to use more in the future! I don&amp;rsquo;t know what part of my email was causing the validation error, but taking it out seemed to help.&lt;/p&gt;
+
+&lt;p&gt;Then, the emails were sent!&lt;/p&gt;
+
+&lt;h2 id=&#34;critique&#34;&gt;Critique&lt;/h2&gt;
+
+&lt;p&gt;I doubt that this is the most efficient or elegant way to solve this issue. I would prefer a method a bit more proactive rather than bruteforcing an approach, but I am quite pragmatic at the end of the day. This way of solving may result in closed loops of folks giving to each other (e.g., Person A gifts to Person B who gifts to Person C who gifts to Person A while we have three other people that give to each other without crossover), but this is not something we particularly care about at this point in time. I don&amp;rsquo;t know how this process would scale with more folks, but this is good enough for where we are at, I think.&lt;/p&gt;
+
+&lt;h2 id=&#34;reflections-on-the-process&#34;&gt;Reflections on the process&lt;/h2&gt;
+
+&lt;p&gt;When I began using R, I was trying to finish my dissertation with it, which I did, but it was a mess. I feel like I have come far from that point. However, going through this process I learned that I have a ways to go. Yet, once I got that repeat loop working, I felt proud of what I accomplished. As my partner could tell you once I sent the draft emails, I was elated! It felt awesome to solve a small problem.&lt;/p&gt;
+
+&lt;p&gt;As I look to more analytic projects in the future, I think I took away some helpful tips. First and foremost, sitting down to write out the steps of the problem as I saw them and planning was critical. It kept me on task, kept the tasks more manageable, and allowed me to compartmentalize testing. Testing the program (albeit crude) along the way to make sure the steps were working as I intended and then testing the program with the steps I completed to at that point helped me catch so many errors, big and small, while my thinking was still fresh. Third, was to have some good food while doing it and watch some football!&lt;/p&gt;
+
+&lt;p&gt;Would love to have some feedback!&lt;/p&gt;
+
+&lt;p&gt;Jordan&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
