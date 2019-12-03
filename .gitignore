@@ -2,3 +2,10 @@
 .Rhistory
 .RData
 .Ruserdata
+config/
+config.toml
+content/
+index.rmd
+resources/
+static/
+themes/
